@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:informa3/constant.dart';
 import 'package:informa3/core/utils/assets.dart';
+import 'package:informa3/core/utils/styles.dart';
 
 import 'custom_choose_exercise_container.dart';
 
@@ -11,29 +12,31 @@ class ChooseWorkoutViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(children: [
       Expanded(
-        child: CustomChooseExerciseContainer(name:"Home",image: AssetsData.chooseHomeExercise,)
+        child: InkWell(onTap: (){
+          Navigator.pushNamed(context, "/exercise");
+        },
+            child: CustomChooseExerciseContainer(name:"Home",image: AssetsData.chooseHomeExercise,))
       ),
-      Row(
+       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
             "V",
-            style: TextStyle(
-              fontSize: 35,
-              fontWeight: FontWeight.w700,
-            ),
+            style: Styles.textStyle35(context)
           ),
           Text(
             ".S",
-            style: TextStyle(
-                fontSize: 35,
-                fontWeight: FontWeight.w700,
-                color: kSecondaryColor),
+            style: Styles.textStyle35(context).copyWith(
+              color: kSecondaryColor
+            )
           ),
         ],
       ),
        Expanded(
-        child: CustomChooseExerciseContainer(image: AssetsData.chooseGymExercise,name: "GYM",)
+        child: InkWell(onTap: (){
+          Navigator.pushNamed(context, "/gym_exercise");
+        },
+            child: CustomChooseExerciseContainer(image: AssetsData.chooseGymExercise,name: "GYM",))
       )
     ]);
   }

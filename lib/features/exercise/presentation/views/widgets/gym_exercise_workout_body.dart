@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:informa3/features/exercise/presentation/manger/workout_cubit/workout_cubit.dart';
 
 import '../../../../../constant.dart';
+import '../../../../../core/utils/styles.dart';
 
 class GymExerciseWorkoutViewBody extends StatefulWidget {
   const GymExerciseWorkoutViewBody({super.key,required this.title,required this.image,required this.documentID});
@@ -40,21 +41,20 @@ class _GymExerciseWorkoutViewBodyState extends State<GymExerciseWorkoutViewBody>
                 bottom: 20,
                 child: Text(
                   widget.title,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold),
+                  style:Styles.textStyle22Bold(context).copyWith(
+                    color: Colors.white,
+                  )
                 ))
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 7,
         ),
-        Align(
+         Align(
             alignment: Alignment.topLeft,
             child: Text(
               "  9 mins . 10 workouts",
-              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+              style: Styles.textStyle17Bold(context)
             )),
         BlocBuilder<WorkoutCubit, WorkoutState>(
           builder: (context, state) {
@@ -87,19 +87,18 @@ class _GymExerciseWorkoutViewBodyState extends State<GymExerciseWorkoutViewBody>
                           children: [
                             Text(
                               state.data[index]["title"],
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold),
+                              style: Styles.textStyle14(context).copyWith(
+                                color: Colors.white
+                              )
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 3,
                             ),
                             Text(
                               state.data[index]["rep"],
-                              style: TextStyle(
-                                color: kSecondaryColor,
-                                fontSize: 14,
-                              ),
+                              style:Styles.textStyle14(context).copyWith(
+                                color: kSecondaryColor
+                              )
                             ),
                           ],
                         ),

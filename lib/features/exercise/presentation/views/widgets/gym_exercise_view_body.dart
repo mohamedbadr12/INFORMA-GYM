@@ -20,7 +20,7 @@ class _GymExerciseViewBodyState extends State<GymExerciseViewBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         child: BlocBuilder<ExerciseCubit, ExerciseState>(
           builder: (context, state) {
             if (state is GymExerciseSuccess) {

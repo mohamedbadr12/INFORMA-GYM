@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:informa3/constant.dart';
+import 'package:informa3/core/utils/styles.dart';
 import 'package:informa3/features/exercise/presentation/manger/exercise_cubit/excerise_cubit.dart';
 
 class HomeExerciseWorkoutViewBody extends StatefulWidget {
@@ -46,21 +47,19 @@ class _HomeExerciseWorkoutViewBodyState
                 bottom: 20,
                 child: Text(
                   widget.title,
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold),
-                ))
+                  style:Styles.textStyle22Bold(context).copyWith(
+                    color: Colors.white
+                  )))
           ],
         ),
         const SizedBox(
           height: 7,
         ),
-        const Align(
+         Align(
             alignment: Alignment.topLeft,
             child: Text(
               "  9 mins . 10 workouts",
-              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+              style: Styles.textStyle17Bold(context)
             )),
         BlocBuilder<ExerciseCubit, ExerciseState>(
           buildWhen: (previous, current) {
@@ -106,19 +105,18 @@ class _HomeExerciseWorkoutViewBodyState
                           children: [
                             Text(
                               state.data[index]["title"],
-                              style: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold),
+                              style: Styles.textStyle14(context).copyWith(
+                                color: Colors.white,
+                              )
                             ),
                             const SizedBox(
                               height: 3,
                             ),
                             Text(
                               state.data[index]["rep"],
-                              style: const TextStyle(
+                              style:Styles.textStyle14(context).copyWith(
                                 color: kSecondaryColor,
-                                fontSize: 14,
-                              ),
+                              )
                             ),
                           ],
                         ),

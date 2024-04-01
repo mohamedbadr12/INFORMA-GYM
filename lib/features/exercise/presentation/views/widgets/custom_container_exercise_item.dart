@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../core/utils/styles.dart';
+
 class CustomContainerExerciseItem extends StatelessWidget {
   const CustomContainerExerciseItem({super.key,required this.imageUrl,required this.title,required this.rep});
   final String imageUrl;
@@ -11,7 +13,6 @@ class CustomContainerExerciseItem extends StatelessWidget {
     return  Stack(
       alignment: Alignment.topLeft,
       children: [
-
 
   Container(margin: const EdgeInsets.symmetric(vertical: 7),
     child: ClipRRect(borderRadius: BorderRadius.circular(25),
@@ -30,20 +31,18 @@ class CustomContainerExerciseItem extends StatelessWidget {
             left: 10,
             child: Text(
               title,
-              style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold),
+              style: Styles.textStyle18(context).copyWith(
+                color: Colors.white,
+              ),
             )),
         Positioned(
             top: 70,
             left: 10,
             child: Text(rep
               ,
-              style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold),
+              style: Styles.textStyle12Bold(context).copyWith(
+                color: Colors.white,
+              )
             )),
       ],
     );

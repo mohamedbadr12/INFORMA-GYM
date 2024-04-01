@@ -7,7 +7,6 @@ import 'package:informa3/constant.dart';
 import 'package:informa3/core/utils/app_router.dart';
 import 'package:informa3/features/exercise/data/repo/exercise_repo_implementation.dart';
 import 'package:informa3/features/exercise/presentation/manger/workout_cubit/workout_cubit.dart';
-import 'features/auth/logic/auth_cubit/auth_cubit.dart';
 import 'features/exercise/data/data_source/exercise/raw_exercise.dart';
 import 'features/exercise/presentation/manger/exercise_cubit/excerise_cubit.dart';
 import 'firebase_options.dart';
@@ -51,7 +50,6 @@ class _MyAppState extends State<MyApp> {
        BlocProvider(create: (context) => ExerciseCubit(homeExerciseRepo: HomeExerciseImp(ExerciseRequest())),),
      ],
        child: MaterialApp(
-
          locale: DevicePreview.locale(context),
          builder: DevicePreview.appBuilder,
          onGenerateRoute: AppRouter.generateRoute,

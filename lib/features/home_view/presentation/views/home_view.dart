@@ -20,9 +20,9 @@ class _HomeViewState extends State<HomeView> {
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
   int currentIndex = 0;
   List<Widget> widgetOptions = <Widget>[
+    const ChooseWorkoutView(),
     const HomeExerciseView(),
     const GymExerciseView(),
-    const ChooseWorkoutView(),
     const LoginView(),
     const LoginView(),
   ];
