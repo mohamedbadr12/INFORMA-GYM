@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:informa3/features/auth/presentation/views/widgets/sign_up_view_body.dart';
+import 'package:informa3/features/auth/ui/views/widgets/sign_up_view_body.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});
@@ -7,8 +7,7 @@ class SignUpView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: SingleChildScrollView(physics: BouncingScrollPhysics(),
-          child: SignUpViewBody()),
+      body: SignUpViewBody(),
     );
   }
 }

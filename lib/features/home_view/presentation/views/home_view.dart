@@ -1,14 +1,13 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:informa3/features/exercise/presentation/views/choose_workout_view.dart';
 import 'package:informa3/features/exercise/presentation/views/gym_exercise_view.dart';
 import 'package:informa3/features/exercise/presentation/views/home_exercise_view.dart';
 import 'package:informa3/features/home_view/presentation/views/widgets/build_header_app_bar.dart';
 import 'package:informa3/features/home_view/presentation/views/widgets/build_menu_app_bar.dart';
 import '../../../../constant.dart';
-import '../../../auth/presentation/views/login_view.dart';
+import '../../../auth/ui/views/login_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -38,14 +37,21 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _key,
-      drawer: const Drawer(
+      drawer:  Drawer(
+        backgroundColor: kSecondaryColor,
+           child:Container(
+  decoration: const BoxDecoration(gradient: LinearGradient(colors: [kPrimaryColor,kSecondaryColor])),
 
-        child: SingleChildScrollView(
+        child: const SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [BuildHeaderAppBar(),  BuildMenuAppBar()],
+            children: [
+              BuildHeaderAppBar(),
+              BuildMenuAppBar()
+            ],
           ),
         ),
+)
       ),
       appBar: AppBar(flexibleSpace: Container(decoration: const BoxDecoration(gradient: LinearGradient(colors: [kPrimaryColor,kSecondaryColor])),),
 
@@ -68,20 +74,8 @@ class _HomeViewState extends State<HomeView> {
           ),
         ),
 
-        // backgroundColor: Colors.white,
-        // centerTitle: true,
       ),
-      // appBar: AppBar(title: const Text("INFORMA"), actions: [
-      //   IconButton(
-      //       onPressed: () async {
-      //         await FirebaseAuth.instance.signOut();
-      //         GoogleSignIn google = GoogleSignIn();
-      //         google.disconnect();
-      //         Navigator.pushNamed(context, "/");
-      //       },
-      //       icon: const Icon(Icons.exit_to_app))
-      // ]),
-      // body: const HomeViewBody(),
+
       body: widgetOptions.elementAt(currentIndex),
       bottomNavigationBar: ConvexAppBar(
         gradient:
@@ -92,13 +86,13 @@ class _HomeViewState extends State<HomeView> {
                 Icons.home,
                 color: Colors.brown.shade100,
               ),
-              title: "exercise"),
+              title: "Exercise"),
           TabItem(
               icon: Icon(
                 Icons.chat,
                 color: Colors.brown.shade100,
               ),
-              title: "chat"),
+              title: "Chat"),
           TabItem(
               icon: Icon(
                 Icons.calculate_outlined,
@@ -120,7 +114,7 @@ class _HomeViewState extends State<HomeView> {
         ],
         initialActiveIndex: currentIndex,
         onTap: changeItem,
-        height: 45.h,
+        height:50
       ),
     );
   }

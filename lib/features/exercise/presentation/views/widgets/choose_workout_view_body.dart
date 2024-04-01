@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:informa3/constant.dart';
 import 'package:informa3/core/utils/assets.dart';
 
@@ -20,14 +19,14 @@ class ChooseWorkoutViewBody extends StatelessWidget {
           Text(
             "V",
             style: TextStyle(
-              fontSize: 35.spMin,
+              fontSize: 35,
               fontWeight: FontWeight.w700,
             ),
           ),
           Text(
             ".S",
             style: TextStyle(
-                fontSize: 35.spMin,
+                fontSize: 35,
                 fontWeight: FontWeight.w700,
                 color: kSecondaryColor),
           ),

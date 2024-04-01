@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/utils/styles.dart';
 
@@ -24,9 +23,7 @@ class CustomChooseExerciseContainer extends StatelessWidget {
         ),
           Positioned(top:20,
             left: 5,
-            child: Text("$name\n  WORKOUT",style: Styles.textStyle20.copyWith(
-                fontSize: 25.spMin,fontWeight: FontWeight.bold
-            ),),
+            child: Text("$name\n  WORKOUT",style: Styles.textStyle25(context)),
           )
         ]
     );

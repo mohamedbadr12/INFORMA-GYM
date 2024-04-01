@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:informa3/features/exercise/presentation/views/home_exercise_workout_view.dart';
-
 import '../../manger/exercise_cubit/excerise_cubit.dart';
 import 'custom_container_exercise_item.dart';
 
@@ -17,17 +14,36 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody> {
   @override
   void initState() {
     // TODO: implement initState
-    BlocProvider.of<ExceriseCubit>(context).getHomeExerciseData();
+    BlocProvider.of<ExerciseCubit>(context).getHomeExerciseData();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15.w),
-        child: BlocBuilder<ExceriseCubit, ExceriseState>(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: BlocBuilder<ExerciseCubit, ExerciseState>(
+          buildWhen: (previous, current) {
+            if(current is HomeWorkoutExerciseSuccess){
+              return false;
+
+            }
+            if(current is HomeWorkoutExerciseFailure){
+              return false;
+
+            }
+            if (current is HomeWorkoutExerciseLoading) {
+              return false;
+
+            }
+            else{
+              return true;
+
+            }
+          },
           builder: (context, state) {
-            if (state is HomeExceriseSuccess) {
+
+            if (state is HomeExerciseSuccess) {
               return ListView.builder(
                 physics: const BouncingScrollPhysics(),
                 itemCount: state.data.length,
@@ -37,10 +53,7 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody> {
                       "docId":state.data[index].documentId,
                       "image":state.data[index].image,
                       "title":state.data[index].title
-                    });        // Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeExerciseWorkoutView(
-                    //   docId:state.data[index].documentId,
-                    // ),
-                    // ));
+                    });
                   },
                     child: CustomContainerExerciseItem(
                       title: state.data[index].title,
@@ -50,7 +63,7 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody> {
                   );
                 },
               );
-            } else if (state is HomeExceriseFailure) {
+            } else if (state is HomeExerciseFailure) {
               return const Center(child: Text("Something Wrong"));
             } else {
               return const Center(child: CircularProgressIndicator());
@@ -59,16 +72,3 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody> {
         ));
   }
 }
-
-// Align(
-//     alignment: Alignment.topLeft,
-//     child: Text(
-//       "7x4 CHALLENGE",
-//       style: TextStyle(
-//           fontSize: 20,
-//           fontWeight: FontWeight.bold,
-//           color: Colors.white),
-//     )),
-// SizedBox(
-//   height: 10,
-// ),

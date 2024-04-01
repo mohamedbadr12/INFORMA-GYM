@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:informa3/constant.dart';
-import 'package:informa3/features/auth/presentation/manger/auth_cubit/auth_cubit.dart';
 import '../../../../../core/utils/styles.dart';
+import '../../../../../core/widgets/animated_text.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../../core/widgets/show_snack.dart';
-import 'animated_text.dart';
+import '../../../logic/auth_cubit/auth_cubit.dart';
+import 'already_have_account_row.dart';
 
 class CustomColumnSignUP extends StatefulWidget {
   const CustomColumnSignUP({super.key});
@@ -53,21 +52,21 @@ class _CustomColumnSignUPState extends State<CustomColumnSignUP> {
         key: formState,
         child: Column(
           children: [
-            SizedBox(
-              height: 20.h,
+            const SizedBox(
+              height: 20,
             ),
             const AnimatedTextAuth(
-              text: "Welcome",
+              text: "INFORMA GYM",
             ),
-            SizedBox(
-              height: 20.h,
+            const SizedBox(
+              height: 20,
             ),
             Text(
               "SignUP to your account",
-              style: Styles.textStyle14.copyWith(color: Colors.white60),
+              style: Styles.textStyle14(context)
             ),
-            SizedBox(
-              height: 14.h,
+            const SizedBox(
+              height: 14,
             ),
             CustomTextFormField(
               label: "Name",
@@ -79,8 +78,8 @@ class _CustomColumnSignUPState extends State<CustomColumnSignUP> {
                 return null;
               },
             ),
-            SizedBox(
-              height: 14.h,
+            const SizedBox(
+              height: 15,
             ),
             CustomTextFormField(
               label: "Email",
@@ -92,8 +91,8 @@ class _CustomColumnSignUPState extends State<CustomColumnSignUP> {
                 return null;
               },
             ),
-            SizedBox(
-              height: 14.h,
+            const SizedBox(
+              height:15,
             ),
             CustomTextFormField(
               label: "Password",
@@ -105,12 +104,10 @@ class _CustomColumnSignUPState extends State<CustomColumnSignUP> {
                 return null;
               },
             ),
-            SizedBox(
-              height: 14.h,
+            const SizedBox(
+              height: 45,
             ),
-            SizedBox(
-              height: 30.h,
-            ),
+
             isLoading
                 ? const Center(child: CircularProgressIndicator())
                 : CustomButton(
@@ -124,26 +121,14 @@ class _CustomColumnSignUPState extends State<CustomColumnSignUP> {
                       } else {}
                     },
                   ),
-            SizedBox(
-              height: 8.h,
+            const SizedBox(
+              height: 8,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text("Already have account ?"),
-                TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/");
-                    },
-                    child: const Text(
-                      "Sign IN",
-                      style: TextStyle(color: kSecondaryColor),
-                    ))
-              ],
-            )
+            const AlreadyHaveAccountRow()
           ],
         ),
       );
     });
   }
 }
+

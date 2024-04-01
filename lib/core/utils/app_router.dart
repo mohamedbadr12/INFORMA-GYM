@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:informa3/features/auth/presentation/views/login_view.dart';
-import 'package:informa3/features/auth/presentation/views/sign_up_view.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:informa3/features/exercise/presentation/views/choose_workout_view.dart';
 import 'package:informa3/features/exercise/presentation/views/gym_exercise_view.dart';
 import 'package:informa3/features/exercise/presentation/views/home_exercise_view.dart';
@@ -9,6 +9,9 @@ import 'package:informa3/features/home_view/presentation/views/home_view.dart';
 import 'package:informa3/features/start_page_view/presentation/views/start_page1_view.dart';
 import 'package:informa3/features/start_page_view/presentation/views/start_page3_view.dart';
 
+import '../../features/auth/logic/auth_cubit/auth_cubit.dart';
+import '../../features/auth/ui/views/login_view.dart';
+import '../../features/auth/ui/views/sign_up_view.dart';
 import '../../features/exercise/presentation/views/gym_exercise_workout_view.dart';
 import '../../features/start_page_view/presentation/views/start_page2_view.dart';
 
@@ -19,13 +22,15 @@ abstract class AppRouter{
       case '/':
         return MaterialPageRoute(
           builder: (context) {
-            return const LoginView();
+            return BlocProvider(create: (context) => AuthCubit(),
+                child: const LoginView());
           },
         );
       case '/sign':
         return MaterialPageRoute(
           builder: (context) {
-            return const SignUpView();
+            return BlocProvider(create: (context) => AuthCubit(),
+                child: const SignUpView());
           },
         );
       case '/home':

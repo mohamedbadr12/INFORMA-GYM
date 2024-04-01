@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/utils/styles.dart';
 
 class StartPage3ViewBody extends StatelessWidget {
@@ -8,16 +7,16 @@ class StartPage3ViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Column(children: [
-      SizedBox(height: 30.h,),
+      const SizedBox(height: 30,),
       Align(alignment: Alignment.topLeft,
           child: IconButton(onPressed: (){
             Navigator.pop(context);
           }, icon:const Icon(Icons.arrow_back,))),
-      SizedBox(height: 25.h,),
+      const SizedBox(height: 25,),
 
-      Center(child: Text("What's your Activity",style: Styles.textStyle30,)),
-      SizedBox(height: 5.h,),
-      Text("Level?",style: Styles.textStyle30
+      Center(child: Text("What's your Activity",style: Styles.textStyle30(context),)),
+      const SizedBox(height: 5,),
+      Text("Level?",style: Styles.textStyle30(context)
       ),
     ],
 

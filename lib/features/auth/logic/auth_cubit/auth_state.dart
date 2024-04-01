@@ -24,7 +24,7 @@ class SignUPLoading extends AuthState {}
 class SignUPFailure extends AuthState {
   final String err;
 
-  SignUPFailure({required this.err});
+  const SignUPFailure({required this.err});
 }
 
 class SignUPSccuess extends AuthState {}
@@ -37,4 +37,4 @@ class GoogleFailure extends AuthState {
   const GoogleFailure(this.err);
 }
 
-class GoogleSccuess extends AuthState {}
+class GoogleSuccess extends AuthState {}

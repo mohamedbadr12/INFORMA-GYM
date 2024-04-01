@@ -13,49 +13,49 @@ class BuildMenuAppBar extends StatelessWidget {
       decoration: const BoxDecoration(gradient: LinearGradient(colors: [
         kPrimaryColor,kSecondaryColor
       ])),
-
       padding: const EdgeInsets.all(24),
-      child: Wrap(
-        runSpacing: 16,
+      child: Column(
         children: [
           ListTile(
             leading: const Icon(Icons.home_outlined),
             title: const Text("Home"),
             onTap: () {},
           ),
+          const SizedBox(height: 15,),
           ListTile(
             leading: const Icon(Icons.favorite_border),
             title: const Text("Favourites"),
             onTap: () {},
           ),
+          const SizedBox(height: 15,),
+
           ListTile(
             leading: const Icon(Icons.music_note_outlined),
             title: const Text("Music"),
             onTap: () {},
           ),
+          const SizedBox(height: 15,),
+
           ListTile(
             leading: const Icon(Icons.map_outlined),
             title: const Text("Google Maps"),
             onTap: () {},
           ),
+          const SizedBox(height: 15,),
+
           const Divider(
             color: Colors.black,
           ),
+          const SizedBox(height: 15,),
+
           ListTile(
             leading: const Icon(Icons.shopping_cart_outlined),
             title: const Text("Cart"),
             onTap: () {},
           ),
+          const SizedBox(height: 15,),
+
           ListTile(
-            leading: const Icon(Icons.logout),
-            title: const Text("Log Out"),
-            onTap: () {},
-          ),
-          ListTile(
-            leading: const Icon(Icons.logout),
-            title: const Text("Log Out"),
-            onTap: () {},
-          ), ListTile(
             leading: const Icon(Icons.logout),
             title: const Text("Log Out"),
             onTap: () async{

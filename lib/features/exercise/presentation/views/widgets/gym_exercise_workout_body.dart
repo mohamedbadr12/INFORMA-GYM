@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:informa3/features/exercise/presentation/manger/workout_cubit/workout_cubit.dart';
 
 import '../../../../../constant.dart';
@@ -31,7 +30,7 @@ class _GymExerciseWorkoutViewBodyState extends State<GymExerciseWorkoutViewBody>
         Stack(
           children: [
             Container(
-              height: 220.h,
+              height: 220,
               decoration:  BoxDecoration(
                   image: DecorationImage(
                       image: CachedNetworkImageProvider(widget.image),
@@ -43,19 +42,19 @@ class _GymExerciseWorkoutViewBodyState extends State<GymExerciseWorkoutViewBody>
                   widget.title,
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 22.spMin,
+                      fontSize: 22,
                       fontWeight: FontWeight.bold),
                 ))
           ],
         ),
         SizedBox(
-          height: 7.h,
+          height: 7,
         ),
         Align(
             alignment: Alignment.topLeft,
             child: Text(
               "  9 mins . 10 workouts",
-              style: TextStyle(fontSize: 17.spMin, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
             )),
         BlocBuilder<WorkoutCubit, WorkoutState>(
           builder: (context, state) {
@@ -75,8 +74,8 @@ class _GymExerciseWorkoutViewBodyState extends State<GymExerciseWorkoutViewBody>
                               size: 29,
                             )),
                         SizedBox(
-                          height: 100.h,
-                          width: 130.w,
+                          height: 100,
+                          width: 130,
                           child: CachedNetworkImage(
                             imageUrl: state.data[index]["image"],
                             filterQuality: FilterQuality.high,
@@ -89,17 +88,17 @@ class _GymExerciseWorkoutViewBodyState extends State<GymExerciseWorkoutViewBody>
                             Text(
                               state.data[index]["title"],
                               style: TextStyle(
-                                  fontSize: 14.spMin,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.bold),
                             ),
                             SizedBox(
-                              height: 3.h,
+                              height: 3,
                             ),
                             Text(
                               state.data[index]["rep"],
                               style: TextStyle(
                                 color: kSecondaryColor,
-                                fontSize: 14.spMin,
+                                fontSize: 14,
                               ),
                             ),
                           ],

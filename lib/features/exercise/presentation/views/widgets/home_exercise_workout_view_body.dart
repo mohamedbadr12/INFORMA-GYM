@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:informa3/constant.dart';
 import 'package:informa3/features/exercise/presentation/manger/exercise_cubit/excerise_cubit.dart';
 
@@ -24,7 +23,7 @@ class _HomeExerciseWorkoutViewBodyState
     extends State<HomeExerciseWorkoutViewBody> {
   @override
   void initState() {
-    BlocProvider.of<ExceriseCubit>(context).getHomeWorkoutExerciseData(
+    BlocProvider.of<ExerciseCubit>(context).getHomeWorkoutExerciseData(
       widget.docId,
     );
     super.initState();
@@ -37,7 +36,7 @@ class _HomeExerciseWorkoutViewBodyState
         Stack(
           children: [
             Container(
-              height: 220.h,
+              height: 220,
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: CachedNetworkImageProvider(widget.image),
@@ -47,23 +46,36 @@ class _HomeExerciseWorkoutViewBodyState
                 bottom: 20,
                 child: Text(
                   widget.title,
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 22.spMin,
+                      fontSize: 22,
                       fontWeight: FontWeight.bold),
                 ))
           ],
         ),
-        SizedBox(
-          height: 7.h,
+        const SizedBox(
+          height: 7,
         ),
-        Align(
+        const Align(
             alignment: Alignment.topLeft,
             child: Text(
               "  9 mins . 10 workouts",
-              style: TextStyle(fontSize: 17.spMin, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
             )),
-        BlocBuilder<ExceriseCubit, ExceriseState>(
+        BlocBuilder<ExerciseCubit, ExerciseState>(
+          buildWhen: (previous, current) {
+          if(current is HomeExerciseLoading){
+            return false;
+          }if(current is HomeExerciseFailure){
+            return false;
+          }if(current is HomeExerciseSuccess){
+            return false;
+
+          }
+          else{
+            return true;
+          }
+          },
           builder: (context, state) {
             if (state is HomeWorkoutExerciseSuccess) {
               return Expanded(
@@ -81,8 +93,8 @@ class _HomeExerciseWorkoutViewBodyState
                               size: 29,
                             )),
                         SizedBox(
-                          height: 100.h,
-                          width: 130.w,
+                          height: 100,
+                          width: 130,
                           child: CachedNetworkImage(
                             imageUrl: state.data[index]["image"],
                             filterQuality: FilterQuality.high,
@@ -94,18 +106,18 @@ class _HomeExerciseWorkoutViewBodyState
                           children: [
                             Text(
                               state.data[index]["title"],
-                              style: TextStyle(
-                                  fontSize: 14.spMin,
+                              style: const TextStyle(
+                                  fontSize: 14,
                                   fontWeight: FontWeight.bold),
                             ),
-                            SizedBox(
-                              height: 3.h,
+                            const SizedBox(
+                              height: 3,
                             ),
                             Text(
                               state.data[index]["rep"],
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: kSecondaryColor,
-                                fontSize: 14.spMin,
+                                fontSize: 14,
                               ),
                             ),
                           ],

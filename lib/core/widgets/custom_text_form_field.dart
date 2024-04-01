@@ -6,17 +6,15 @@ class CustomTextFormField extends StatelessWidget {
   final TextEditingController? controller;
   final String? Function(String?)? validator;
 
-
-
-
   @override
   Widget build(BuildContext context) {
     return Container(padding: const EdgeInsets.all(10),
       child: TextFormField(
+
         controller:controller ,
         validator: validator,
-
-        decoration: InputDecoration(labelText: label ,labelStyle: const TextStyle(color: Colors.white60),
+        decoration: InputDecoration(contentPadding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+            labelText: label ,labelStyle: const TextStyle(color: Colors.white60),
             filled: true,
             fillColor: Colors.white10,
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../manger/exercise_cubit/excerise_cubit.dart';
 import 'custom_container_exercise_item.dart';
@@ -15,14 +14,14 @@ class GymExerciseViewBody extends StatefulWidget {
 class _GymExerciseViewBodyState extends State<GymExerciseViewBody> {
   @override
   void initState() {
-    BlocProvider.of<ExceriseCubit>(context).getGymExerciseData();
+    BlocProvider.of<ExerciseCubit>(context).getGymExerciseData();
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15.w),
-        child: BlocBuilder<ExceriseCubit, ExceriseState>(
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        child: BlocBuilder<ExerciseCubit, ExerciseState>(
           builder: (context, state) {
             if (state is GymExerciseSuccess) {
               return ListView.builder(

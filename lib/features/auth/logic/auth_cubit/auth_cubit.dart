@@ -14,7 +14,7 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void>createUserAuth({required String email,required String password})async{
     emit(SignUPLoading());
     try {
-      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+ await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -24,11 +24,9 @@ class AuthCubit extends Cubit<AuthState> {
     } on FirebaseAuthException catch (e) {
 
       if (e.code == 'weak-password') {
-       emit(SignUPFailure(err: "The password provided is too weak."));
-        print('The password provided is too weak.');
+       emit(const SignUPFailure(err: "The password provided is too weak."));
       } else if (e.code == 'email-already-in-use') {
-        emit( SignUPFailure(err: "The account already exists for that email."));
-        print('The account already exists for that email.');
+        emit( const SignUPFailure(err: "The account already exists for that email."));
       }
 
     }
@@ -37,12 +35,11 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> loginUser({required String email,required String password}) async {
     emit(AuthLoading());
     try {
-      UserCredential result = await FirebaseAuth.instance
+      await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
 
       emit(AuthSccuess());
     } on FirebaseAuthException catch (ex) {
-      emit(const AuthFailure(err: "Please Check your email & password"));
       if (ex.code == 'user-not-found') {
         emit( const AuthFailure(err: "user not found"));
       } else if (ex.code == 'wrong-password') {
@@ -64,7 +61,7 @@ class AuthCubit extends Cubit<AuthState> {
       return;
     }
     else{
-      emit(GoogleSccuess());
+      emit(GoogleSuccess());
     }
 
     // Obtain the auth details from the request

@@ -1,42 +1,42 @@
 part of 'excerise_cubit.dart';
 
-abstract class ExceriseState extends Equatable {
-  const ExceriseState();
+abstract class ExerciseState extends Equatable {
+  const ExerciseState();
   @override
   List<Object> get props => [];
 }
 
-class HomeExceriseInitial extends ExceriseState {}
-class HomeExceriseLoading extends ExceriseState {}
-class HomeExceriseSuccess extends ExceriseState {
+class HomeExerciseInitial extends ExerciseState {}
+class HomeExerciseLoading extends ExerciseState {}
+class HomeExerciseSuccess extends ExerciseState {
   final List <HomeExerciseModel>data;
 
-  const HomeExceriseSuccess({required this.data});
+  const HomeExerciseSuccess({required this.data});
 }
-class HomeExceriseFailure extends ExceriseState {
+class HomeExerciseFailure extends ExerciseState {
   final String error;
 
-  const HomeExceriseFailure( {required this.error});
+  const HomeExerciseFailure( {required this.error});
 }
-class GymExerciseLoading extends ExceriseState {}
+class GymExerciseLoading extends ExerciseState {}
 
-class GymExerciseSuccess extends ExceriseState {
+class GymExerciseSuccess extends ExerciseState {
   final List<GymExerciseModel>data;
 
   const GymExerciseSuccess({required this.data});
 }
-class GymExerciseFailure extends ExceriseState {
+class GymExerciseFailure extends ExerciseState {
   final String error;
 
   const GymExerciseFailure( {required this.error});
 }
 
-class HomeWorkoutExerciseLoading extends ExceriseState {}
-class HomeWorkoutExerciseSuccess extends ExceriseState {
+class HomeWorkoutExerciseLoading extends ExerciseState {}
+class HomeWorkoutExerciseSuccess extends ExerciseState {
  final List data;
   const HomeWorkoutExerciseSuccess({required this.data});
 }
-class HomeWorkoutExerciseFailure extends ExceriseState {
+class HomeWorkoutExerciseFailure extends ExerciseState {
   final String error;
   const HomeWorkoutExerciseFailure( {required this.error});
 }

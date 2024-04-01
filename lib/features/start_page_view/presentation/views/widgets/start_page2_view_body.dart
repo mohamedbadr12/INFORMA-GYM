@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:informa3/core/widgets/custom_button.dart';
 
 import '../../../../../core/utils/styles.dart';
@@ -10,31 +9,43 @@ class StartPage2ViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Column(crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        SizedBox(height: 30.h,),
-        Align(alignment: Alignment.topLeft,
-            child: IconButton(onPressed: (){
-              Navigator.pop(context);
-            }, icon:const Icon(Icons.arrow_back,))),
-        SizedBox(height: 40.h,),
+    return  CustomScrollView(
+      slivers: [
+        const SliverToBoxAdapter(child: SizedBox(height: 30,)),
+        SliverToBoxAdapter(
+          child: Align(alignment: Alignment.topLeft,
+              child: Padding(padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 15),
+                child: IconButton(onPressed: (){
+                  Navigator.pop(context);
+                }, icon:const Icon(Icons.arrow_back,)),
+              )),
+        ),
+        const SliverToBoxAdapter(child: SizedBox(height: 40,)),
 
-        Center(child: Text("What's your age?",style: Styles.textStyle30,)),
-        SizedBox(height: 5.h,),
-        Text("Select your age",style: Styles.textStyle16.copyWith(
-            color: Colors.white60
-        ),),
-        SizedBox(height: 20.h,),
+        SliverToBoxAdapter(child: Center(child: Text("What's your age?",style: Styles.textStyle30(context),))),
+        const SliverToBoxAdapter(child: SizedBox(height: 5,)),
+        SliverToBoxAdapter(
+          child: Center(
+            child: Text("Select your age",style: Styles.textStyle16(context).copyWith(
+                color: Colors.white60
+            ),),
+          ),
+        ),
+        const SliverToBoxAdapter(child: SizedBox(height: 20,)),
         const AgeSelect(),
-        SizedBox(height: 140.h,),
+        const SliverToBoxAdapter(child: SizedBox(height: 140,)),
 
-        CustomButton(label: "CONTINUE", onTap: (){
-          Navigator.pushNamed(context, "/home");
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 50),
+            child: CustomButton(label: "CONTINUE", onTap: (){
+              Navigator.pushNamed(context, "/home");
 
 
-        })
-
-
+            }),
+          ),
+        ),
+        const SliverToBoxAdapter(child: SizedBox(height: 20,))
 
       ],
     );

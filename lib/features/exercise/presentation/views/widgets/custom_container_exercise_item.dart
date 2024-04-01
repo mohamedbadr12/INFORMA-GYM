@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomContainerExerciseItem extends StatelessWidget {
   const CustomContainerExerciseItem({super.key,required this.imageUrl,required this.title,required this.rep});
@@ -14,7 +13,7 @@ class CustomContainerExerciseItem extends StatelessWidget {
       children: [
 
 
-  Container(margin: EdgeInsets.symmetric(vertical: 7.h),
+  Container(margin: const EdgeInsets.symmetric(vertical: 7),
     child: ClipRRect(borderRadius: BorderRadius.circular(25),
       child: AspectRatio(
       aspectRatio:9/4 ,
@@ -24,25 +23,16 @@ class CustomContainerExerciseItem extends StatelessWidget {
       )),
   ),
 
-        // Container(
-        //   margin: EdgeInsets.symmetric(vertical: 10.h),
-        //   height: 140.h,
-        //   decoration: BoxDecoration(
-        //       borderRadius: BorderRadius.circular(25),
-        //       color: Colors.transparent,
-        //       image:  DecorationImage(
-        //           image: NetworkImage(imageUrl),
-        //           fit: BoxFit.fitWidth)),
-        // ),
+
 
         Positioned(
             top: 40,
             left: 10,
             child: Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 18.spMin,
+                  fontSize: 18,
                   fontWeight: FontWeight.bold),
             )),
         Positioned(
@@ -50,9 +40,9 @@ class CustomContainerExerciseItem extends StatelessWidget {
             left: 10,
             child: Text(rep
               ,
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 12.spMin,
+                  fontSize: 12,
                   fontWeight: FontWeight.bold),
             )),
       ],

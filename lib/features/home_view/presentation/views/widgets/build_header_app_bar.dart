@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../constant.dart';
 
@@ -15,21 +14,21 @@ class BuildHeaderAppBar extends StatelessWidget {
         top: 24 + MediaQuery.of(context).padding.top,
         bottom: 24,
       ),
-      child:  Column(
+      child:  const Column(
         children: [
           CircleAvatar(
-            radius: 47.r,
-            backgroundImage: const NetworkImage(
+            radius: 47,
+            backgroundImage: NetworkImage(
                 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMwp4g3tm47QIqXsbdPVJLfQ69DnyM8YM85Q&usqp=CAU'),
           ),
           SizedBox(
-            height: 10.h,
+            height: 10,
           ),
-          const Text(
+          Text(
             "mohamed",
             style: TextStyle(fontSize: 28, color: Colors.white),
           ),
-          const Text(
+          Text(
             "mohamed22@gmail.com",
             style: TextStyle(fontSize: 14, color: Colors.white),
           )

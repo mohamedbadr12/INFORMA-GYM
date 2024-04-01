@@ -1,24 +1,23 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:informa3/core/widgets/show_snack.dart';
-import 'package:informa3/features/auth/presentation/manger/auth_cubit/auth_cubit.dart';
-import '../../../../../constant.dart';
 import '../../../../../core/utils/styles.dart';
+import '../../../../../core/widgets/animated_text.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
-import 'animated_text.dart';
+import '../../../logic/auth_cubit/auth_cubit.dart';
 import 'another_login_auth.dart';
+import 'new_user_row.dart';
 
-class CustomColumnAuth extends StatefulWidget {
-  const CustomColumnAuth({super.key});
+class CustomColumnLogin extends StatefulWidget {
+  const CustomColumnLogin({super.key});
 
   @override
-  State<CustomColumnAuth> createState() => _CustomColumnAuthState();
+  State<CustomColumnLogin> createState() => _CustomColumnLoginState();
 }
 
-class _CustomColumnAuthState extends State<CustomColumnAuth> {
+class _CustomColumnLoginState extends State<CustomColumnLogin> {
   GlobalKey<FormState> formState = GlobalKey<FormState>();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
@@ -26,7 +25,6 @@ class _CustomColumnAuthState extends State<CustomColumnAuth> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     email.dispose();
     password.dispose();
     super.dispose();
@@ -34,7 +32,8 @@ class _CustomColumnAuthState extends State<CustomColumnAuth> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AuthCubit, AuthState>(listener: (context, state) {
+    return BlocConsumer<AuthCubit, AuthState>(
+        listener: (context, state) {
       if (state is AuthLoading) {
         isLoading = true;
       }
@@ -53,21 +52,21 @@ class _CustomColumnAuthState extends State<CustomColumnAuth> {
         key: formState,
         child: Column(
           children: [
-            SizedBox(
-              height: 20.h,
+            const SizedBox(
+              height: 20,
             ),
             const AnimatedTextAuth(
-              text: "Welcome Back",
+              text: "INFORMA GYM",
             ),
-            SizedBox(
-              height: 20.h,
+            const SizedBox(
+              height: 20,
             ),
             Text(
               "Login to your account",
-              style: Styles.textStyle14.copyWith(color: Colors.white60),
+              style: Styles.textStyle14(context)
             ),
-            SizedBox(
-              height: 14.h,
+            const SizedBox(
+              height: 14,
             ),
             CustomTextFormField(
                 label: "Email",
@@ -78,8 +77,8 @@ class _CustomColumnAuthState extends State<CustomColumnAuth> {
                   }
                   return null;
                 }),
-            SizedBox(
-              height: 5.h,
+            const SizedBox(
+              height: 15,
             ),
             CustomTextFormField(
                 label: "Password",
@@ -104,12 +103,12 @@ class _CustomColumnAuthState extends State<CustomColumnAuth> {
                 },
                 child: Text(
                   "Forgot password?",
-                  style: Styles.textStyle14.copyWith(color: Colors.white60),
+                  style: Styles.textStyle14(context),
                 ),
               ),
             ),
-            SizedBox(
-              height: 14.h,
+            const SizedBox(
+              height: 30,
             ),
             isLoading
                 ? const Center(
@@ -123,32 +122,18 @@ class _CustomColumnAuthState extends State<CustomColumnAuth> {
                             email: email.text, password: password.text);
                       } else {}
                     }),
-            SizedBox(
-              height: 15.h,
-            ),
-
-            SizedBox(
-              height: 7.h,
+            const SizedBox(
+              height: 30,
             ),
             const AnotherAuthLogin(),
-            SizedBox(
-              height: 5.h,
+            const SizedBox(
+              height: 5,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text("Don't have account ? "),
-                TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/sign");
-                    },
-                    child: const Text("SIGN UP",
-                        style: TextStyle(color: kSecondaryColor)))
-              ],
-            )
+            const NewUserRow()
           ],
         ),
       );
     });
   }
 }
+

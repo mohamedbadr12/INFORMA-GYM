@@ -8,19 +8,19 @@ import '../../../data/model/gym_exercise_model.dart';
 
 part 'excerise_state.dart';
 
-class ExceriseCubit extends Cubit<ExceriseState> {
-  ExceriseCubit({required this.homeExerciseRepo})
-      : super(HomeExceriseInitial());
+class ExerciseCubit extends Cubit<ExerciseState> {
+  ExerciseCubit({required this.homeExerciseRepo})
+      : super(HomeExerciseInitial());
   final BaseHomeExerciseRepo homeExerciseRepo;
 
   Future<void> getHomeExerciseData() async {
-    emit(HomeExceriseLoading());
+    emit(HomeExerciseLoading());
 
     var data = await homeExerciseRepo.fetchHomeExercise();
     data.fold((failure) {
-      emit(const HomeExceriseFailure(error: "Something Wrong"));
+      emit(const HomeExerciseFailure(error: "Something Wrong"));
     }, (data) {
-      emit(HomeExceriseSuccess(data: data));
+      emit(HomeExerciseSuccess(data: data));
     });
   }
 
