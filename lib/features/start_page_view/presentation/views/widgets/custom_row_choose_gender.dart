@@ -40,11 +40,11 @@ class _CustomRowChooseGenderState extends State<CustomRowChooseGender> {
                 decoration: BoxDecoration(
                   gradient: selectedIndex == 0
                       ? const LinearGradient(colors: [
-                    Colors.green,
-                    Colors.green,
-                  ])
+                          Colors.green,
+                          Colors.green,
+                        ])
                       : const LinearGradient(
-                      colors: [kSecondaryColor, Color(0xff281537)]),
+                          colors: [kSecondaryColor, Color(0xff281537)]),
                   borderRadius: BorderRadius.circular(25),
                 ),
                 child: Center(
@@ -69,11 +69,11 @@ class _CustomRowChooseGenderState extends State<CustomRowChooseGender> {
                 decoration: BoxDecoration(
                   gradient: selectedIndex == 1
                       ? const LinearGradient(colors: [
-                    Colors.green,
-                    Colors.green,
-                  ])
+                          Colors.green,
+                          Colors.green,
+                        ])
                       : const LinearGradient(
-                      colors: [kSecondaryColor, Color(0xff281537)]),
+                          colors: [kSecondaryColor, Color(0xff281537)]),
                   borderRadius: BorderRadius.circular(25),
                 ),
                 child: Center(

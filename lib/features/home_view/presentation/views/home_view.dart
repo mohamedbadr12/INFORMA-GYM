@@ -1,6 +1,8 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:informa3/features/bmi_calculater/presentation/views/calculator.dart';
+import 'package:informa3/features/bmr_calculator/presentation/views/bmr_view.dart';
 import 'package:informa3/features/exercise/presentation/views/choose_workout_view.dart';
 import 'package:informa3/features/exercise/presentation/views/gym_exercise_view.dart';
 import 'package:informa3/features/exercise/presentation/views/home_exercise_view.dart';
@@ -23,10 +25,11 @@ class _HomeViewState extends State<HomeView> {
     const ChooseWorkoutView(),
     const HomeExerciseView(),
     const GymExerciseView(),
-    const LoginView(),
-    const LoginView(),
+    const Calculator(),
+    const BmrView(),
   ];
   List<Color> color = [];
+
   void changeItem(int value) {
     setState(() {
       currentIndex = value;
@@ -37,24 +40,25 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _key,
-      drawer:  Drawer(
-        backgroundColor: kSecondaryColor,
-           child:Container(
-  decoration: const BoxDecoration(gradient: LinearGradient(colors: [kPrimaryColor,kSecondaryColor])),
-
-        child: const SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              BuildHeaderAppBar(),
-              BuildMenuAppBar()
-            ],
-          ),
+      drawer: Drawer(
+          backgroundColor: kSecondaryColor,
+          child: Container(
+            decoration: const BoxDecoration(
+                gradient:
+                    LinearGradient(colors: [kPrimaryColor, kSecondaryColor])),
+            child: const SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [BuildHeaderAppBar(), BuildMenuAppBar()],
+              ),
+            ),
+          )),
+      appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+              gradient:
+                  LinearGradient(colors: [kPrimaryColor, kSecondaryColor])),
         ),
-)
-      ),
-      appBar: AppBar(flexibleSpace: Container(decoration: const BoxDecoration(gradient: LinearGradient(colors: [kPrimaryColor,kSecondaryColor])),),
-
         elevation: 0.0,
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
@@ -73,54 +77,46 @@ class _HomeViewState extends State<HomeView> {
             fontSize: 20,
           ),
         ),
-
       ),
-
       body: widgetOptions.elementAt(currentIndex),
       bottomNavigationBar: ConvexAppBar(
-        gradient:
-            const LinearGradient(colors: [kSecondaryColor, Color(0xff281537)]),
-        items: [
-          TabItem(
-              icon: Icon(
-                Icons.home,
-                color: Colors.brown.shade100,
-              ),
-              title: "Exercise"),
-          TabItem(
-              icon: Icon(
-                Icons.chat,
-                color: Colors.brown.shade100,
-              ),
-              title: "Chat"),
-          TabItem(
-              icon: Icon(
-                Icons.calculate_outlined,
-                color: Colors.brown.shade100,
-              ),
-              title: "Cal"),
-          TabItem(
-              icon: Icon(
-                Icons.health_and_safety,
-                color: Colors.brown.shade100,
-              ),
-              title: "Diet plan"),
-          TabItem(
-              icon: Icon(
-                CupertinoIcons.cart,
-                color: Colors.brown.shade100,
-              ),
-              title: "Store"),
-        ],
-        initialActiveIndex: currentIndex,
-        onTap: changeItem,
-        height:50
-      ),
+          gradient: const LinearGradient(
+              colors: [kSecondaryColor, Color(0xff281537)]),
+          items: [
+            TabItem(
+                icon: Icon(
+                  Icons.home,
+                  color: Colors.brown.shade100,
+                ),
+                title: "Exercise"),
+            TabItem(
+                icon: Icon(
+                  Icons.chat,
+                  color: Colors.brown.shade100,
+                ),
+                title: "Chat"),
+            TabItem(
+                icon: Icon(
+                  Icons.calculate_outlined,
+                  color: Colors.brown.shade100,
+                ),
+                title: "Cal"),
+            TabItem(
+                icon: Icon(
+                  Icons.health_and_safety,
+                  color: Colors.brown.shade100,
+                ),
+                title: "Diet plan"),
+            TabItem(
+                icon: Icon(
+                  CupertinoIcons.cart,
+                  color: Colors.brown.shade100,
+                ),
+                title: "Store"),
+          ],
+          initialActiveIndex: currentIndex,
+          onTap: changeItem,
+          height: 50),
     );
   }
 }
-
-
-
-
-

@@ -7,8 +7,10 @@ class HomeExerciseModel extends Equatable {
   final String rep;
   final int order;
   final String documentId;
+  final String description;
 
   const HomeExerciseModel({
+    required this.description,
     required this.documentId,
     required this.image,
     required this.title,
@@ -20,6 +22,7 @@ class HomeExerciseModel extends Equatable {
       DocumentSnapshot<Map<String, dynamic>> document) {
     final json = document.data()!;
     return HomeExerciseModel(
+      description: json["description"],
       documentId: document.id,
       image: json["image"],
       title: json["title"],
@@ -29,5 +32,5 @@ class HomeExerciseModel extends Equatable {
   }
 
   @override
-  List<Object> get props => [documentId,image, title, rep, order];
+  List<Object> get props => [documentId, image, title, rep, order, description];
 }

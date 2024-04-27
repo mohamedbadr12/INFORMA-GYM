@@ -24,41 +24,38 @@ class _ExerciseViewBodyState extends State<ExerciseViewBody> {
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: BlocBuilder<ExerciseCubit, ExerciseState>(
           buildWhen: (previous, current) {
-            if(current is HomeWorkoutExerciseSuccess){
+            if (current is HomeWorkoutExerciseSuccess) {
               return false;
-
             }
-            if(current is HomeWorkoutExerciseFailure){
+            if (current is HomeWorkoutExerciseFailure) {
               return false;
-
             }
             if (current is HomeWorkoutExerciseLoading) {
               return false;
-
-            }
-            else{
+            } else {
               return true;
-
             }
           },
           builder: (context, state) {
-
             if (state is HomeExerciseSuccess) {
               return ListView.builder(
                 physics: const BouncingScrollPhysics(),
                 itemCount: state.data.length,
                 itemBuilder: (context, index) {
-                  return InkWell(onTap: (){
-                    Navigator.pushNamed(context,"/home_workout",arguments: {
-                      "docId":state.data[index].documentId,
-                      "image":state.data[index].image,
-                      "title":state.data[index].title
-                    });
-                  },
+                  return InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, "/home_exercise_workout",
+                          arguments: {
+                            "docId": state.data[index].documentId,
+                            "image": state.data[index].image,
+                            "title": state.data[index].title,
+                            "description": state.data[index].description
+                          });
+                    },
                     child: CustomContainerExerciseItem(
                       title: state.data[index].title,
                       imageUrl: state.data[index].image,
-                      rep: state.data[index].rep ,
+                      rep: state.data[index].rep,
                     ),
                   );
                 },
